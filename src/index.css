@@ -2,14 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Rakshabandhan Surprise Website Design System
+All colors MUST be HSL for beautiful pastel aesthetics.
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=Caveat:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Soft Pastel Pink Color Palette */
+    --background: 350 100% 98%;
+    --foreground: 330 15% 25%;
+    
+    /* Dreamy Pink Tones */
+    --pink-light: 350 100% 95%;
+    --pink-soft: 345 85% 88%;
+    --pink-medium: 340 75% 78%;
+    --pink-accent: 335 70% 68%;
+    
+    /* Lavender Accents */
+    --lavender-light: 280 60% 95%;
+    --lavender-soft: 275 50% 88%;
+    --lavender-medium: 270 45% 78%;
+    
+    /* Supporting Colors */
+    --white-pure: 0 0% 100%;
+    --white-soft: 350 50% 98%;
+    --gray-light: 330 10% 85%;
+    --gray-medium: 330 8% 60%;
+    
+    /* Magical Gradients */
+    --gradient-dreamy: linear-gradient(135deg, hsl(var(--pink-light)), hsl(var(--lavender-light)));
+    --gradient-soft: linear-gradient(180deg, hsl(var(--pink-soft)), hsl(var(--white-soft)));
+    --gradient-magic: linear-gradient(45deg, hsl(var(--pink-medium)), hsl(var(--lavender-medium)), hsl(var(--pink-light)));
+    --gradient-glow: radial-gradient(circle, hsl(var(--pink-accent) / 0.3), transparent);
+    
+    /* Sparkle Effects */
+    --sparkle-glow: 0 0 20px hsl(var(--pink-accent) / 0.6);
+    --heart-glow: 0 0 30px hsl(335 80% 70% / 0.8);
+    --soft-shadow: 0 10px 40px hsl(var(--pink-medium) / 0.2);
+    
+    /* Smooth Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-gentle: all 0.3s ease-out;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -100,6 +136,134 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-poppins;
+    background: var(--gradient-dreamy);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Magical Animations */
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--pink-accent) / 0.4); }
+    50% { box-shadow: 0 0 40px hsl(var(--pink-accent) / 0.8); }
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  /* Button Variants */
+  .btn-magical {
+    @apply px-8 py-4 rounded-full font-medium text-lg;
+    background: var(--gradient-magic);
+    color: hsl(var(--white-pure));
+    border: 2px solid hsl(var(--pink-accent) / 0.3);
+    box-shadow: var(--soft-shadow);
+    transition: var(--transition-bounce);
+  }
+  
+  .btn-magical:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--heart-glow);
+  }
+  
+  .btn-glow {
+    @apply px-6 py-3 rounded-full font-semibold;
+    background: hsl(var(--pink-accent));
+    color: hsl(var(--white-pure));
+    animation: glow 2s ease-in-out infinite;
+    transition: var(--transition-smooth);
+  }
+  
+  /* Text Animations */
+  .typing-text {
+    overflow: hidden;
+    border-right: 3px solid hsl(var(--pink-accent));
+    white-space: nowrap;
+    animation: typing 3s steps(40), blink 1s infinite;
+  }
+  
+  /* Sparkle Effects */
+  .sparkles {
+    position: relative;
+  }
+  
+  .sparkles::before,
+  .sparkles::after {
+    content: '✨';
+    position: absolute;
+    animation: sparkle 2s ease-in-out infinite;
+  }
+  
+  .sparkles::before {
+    top: -10px;
+    left: -10px;
+    animation-delay: 0s;
+  }
+  
+  .sparkles::after {
+    top: -10px;
+    right: -10px;
+    animation-delay: 1s;
+  }
+  
+  /* Floating Hearts */
+  .floating-hearts::before {
+    content: '💗';
+    position: absolute;
+    animation: float 3s ease-in-out infinite;
+    font-size: 2rem;
+    top: 20%;
+    left: 10%;
+  }
+  
+  /* Paper Letter Effect */
+  .paper-letter {
+    background: hsl(var(--white-soft));
+    border: 1px solid hsl(var(--pink-soft));
+    box-shadow: var(--soft-shadow);
+    position: relative;
+  }
+  
+  .paper-letter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to right, 
+      transparent 0px, 
+      hsl(var(--pink-light)) 1px, 
+      transparent 2px
+    );
+    background-size: 30px 100%;
   }
 }
