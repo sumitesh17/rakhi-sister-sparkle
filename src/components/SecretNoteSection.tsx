@@ -20,8 +20,8 @@ const SecretNoteSection = ({ onNext }: SecretNoteSectionProps) => {
   };
 
   // Demo content - will be replaced with uploaded files
-  const badMemoryText = "Demo bad memory text will be loaded from uploaded file...";
-  const goodMemoryText = "Demo good memory text will be loaded from uploaded file...";
+  const badMemoryText = "That day we argued over something silly, and I let my stubborn side win. I know it hurt you, and I wish I had just hugged you instead. I'm sorry for the times I made you feel alone — we will erase that part and write better memories together.";
+  const goodMemoryText = "Remember our late-night talks and laughing so hard we couldn't breathe? The way you cheer me up with one look, our inside jokes, our shared dreams — that's us. I treasure every bit of it, and I always will.";
 
   if (!currentNote) {
     return (

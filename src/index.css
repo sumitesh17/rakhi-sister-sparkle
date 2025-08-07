@@ -203,11 +203,11 @@ All colors MUST be HSL for beautiful pastel aesthetics.
   }
   
   /* Text Animations */
-  .typing-text {
+.typing-text {
     overflow: hidden;
     border-right: 3px solid hsl(var(--pink-accent));
     white-space: nowrap;
-    animation: typing 3s steps(40), blink 1s infinite;
+    animation: typing 3s steps(40);
   }
   
   /* Sparkle Effects */
